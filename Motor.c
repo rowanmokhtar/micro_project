@@ -1,48 +1,72 @@
 #include "Motor.h"
 
-#define DDRD  (*(volatile unsigned char*)0x2A)
-#define PORTD (*(volatile unsigned char*)0x2B)
-#define IN1 2
-#define IN2 3
-#define IN3 4
-#define IN4 5
+// Motor A (Left)
+#define A_IN1_PORT GPIOB
+#define A_IN1_PIN  PIN0
 
-void Motor_Init(void)
+#define A_IN2_PORT GPIOB
+#define A_IN2_PIN  PIN1
+
+// Motor B (Right)
+#define B_IN1_PORT GPIOB
+#define B_IN1_PIN  PIN2
+
+#define B_IN2_PORT GPIOB
+#define B_IN2_PIN  PIN3
+
+void Motor_init(void)
 {
-    DDRD |= (1 << IN1) | (1 << IN2) | (1 << IN3) | (1 << IN4);
+    GPIO_setPinDirection(A_IN1_PORT, A_IN1_PIN, OUTPUT);
+    GPIO_setPinDirection(A_IN2_PORT, A_IN2_PIN, OUTPUT);
+    GPIO_setPinDirection(B_IN1_PORT, B_IN1_PIN, OUTPUT);
+    GPIO_setPinDirection(B_IN2_PORT, B_IN2_PIN, OUTPUT);
+
+    Motor_move(STOP);
 }
 
-void Motor_Forward(void)
+void Motor_move(Motor_State state)
 {
-    PORTD |= (1 << IN1) | (1 << IN3);
-    PORTD &= ~((1 << IN2) | (1 << IN4));
-}
+    switch(state)
+    {
+        case STOP:
+            GPIO_setPinValue(A_IN1_PORT, A_IN1_PIN, LOW);
+            GPIO_setPinValue(A_IN2_PORT, A_IN2_PIN, LOW);
+            GPIO_setPinValue(B_IN1_PORT, B_IN1_PIN, LOW);
+            GPIO_setPinValue(B_IN2_PORT, B_IN2_PIN, LOW);
+            break;
 
-void Motor_Backward(void)
-{
-    PORTD |= (1 << IN2) | (1 << IN4);
-    PORTD &= ~((1 << IN1) | (1 << IN3));
-}
+        case FORWARD:
+            GPIO_setPinValue(A_IN1_PORT, A_IN1_PIN, HIGH);
+            GPIO_setPinValue(A_IN2_PORT, A_IN2_PIN, LOW);
 
-void Motor_Left(void)
-{
-    PORTD |= (1 << IN3);
-    PORTD &= ~(1 << IN4);
+            GPIO_setPinValue(B_IN1_PORT, B_IN1_PIN, HIGH);
+            GPIO_setPinValue(B_IN2_PORT, B_IN2_PIN, LOW);
+            break;
 
-    PORTD &= ~(1 << IN1);
-    PORTD &= ~(1 << IN2);
-}
+        case BACKWARD:
+            GPIO_setPinValue(A_IN1_PORT, A_IN1_PIN, LOW);
+            GPIO_setPinValue(A_IN2_PORT, A_IN2_PIN, HIGH);
 
-void Motor_Right(void)
-{
-    PORTD |= (1 << IN1);
-    PORTD &= ~(1 << IN2);
+            GPIO_setPinValue(B_IN1_PORT, B_IN1_PIN, LOW);
+            GPIO_setPinValue(B_IN2_PORT, B_IN2_PIN, HIGH);
+            break;
 
-    PORTD &= ~(1 << IN3);
-    PORTD &= ~(1 << IN4);
-}
+        case RIGHT:
+            // الموتور( A ) بيتحرك لقدام
+            GPIO_setPinValue(A_IN1_PORT, A_IN1_PIN, HIGH);
+            GPIO_setPinValue(A_IN2_PORT, A_IN2_PIN, LOW);
+            // الموتور( B ) بيتحرك للخلف
+            GPIO_setPinValue(B_IN1_PORT, B_IN1_PIN, LOW);
+            GPIO_setPinValue(B_IN2_PORT, B_IN2_PIN, HIGH);
+            break;
 
-void Motor_Stop(void)
-{
-    PORTD &= ~((1 << IN1) | (1 << IN2) | (1 << IN3) | (1 << IN4));
+        case LEFT:
+            // الموتور( A ) بيتحرك للخلف
+            GPIO_setPinValue(A_IN1_PORT, A_IN1_PIN, LOW);
+            GPIO_setPinValue(A_IN2_PORT, A_IN2_PIN, HIGH);
+            // الموتور( B ) بيتحرك لقدام
+            GPIO_setPinValue(B_IN1_PORT, B_IN1_PIN, HIGH);
+            GPIO_setPinValue(B_IN2_PORT, B_IN2_PIN, LOW);
+            break;
+    }
 }
