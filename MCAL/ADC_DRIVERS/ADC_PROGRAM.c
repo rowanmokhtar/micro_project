@@ -1,5 +1,5 @@
 #include "ADC_INTERFACE.h"
-#include "..\MCAL\GPIO_Drivers\GPIO_INTERFACE.h"
+#include "..\MICRO_PROJECT\MCAL\GPIO_Drivers\GPIO_INTERFACE.h"
 
 void ADC_init(adc_vref_t vref, adc_prescaler_t prescaler)
 {

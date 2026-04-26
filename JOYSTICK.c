@@ -18,14 +18,13 @@ s16 normalize (u16 value)
 
 void JOY_init ()
 {
-    ADC_init (JOY_CH_X);
-    ADC_init (JOY_CH_Y);
+    ADC_init (JOY_CH_X, DIV_128);
+    ADC_init (JOY_CH_Y, DIV_128);
 }
 
 void JOY_read (JOY_pos_t* pos)
 {
-    if (pos == NULL) return;
-
+    
     u16 ADC_x = ADC_read(JOY_CH_X);
     u16 ADC_y = ADC_read(JOY_CH_Y);
 
