@@ -1,5 +1,5 @@
 #include "JOYSTICK.h"
-#include "../MCAL/ADC DRIVERS/ADC_INTERFACE.h"
+#include "../MICRO_PROJECT/MCAL/ADC_DRIVERS/ADC_INTERFACE.h"
 
 #define JOY_CH_X 0
 #define JOY_CH_Y 1
@@ -16,13 +16,15 @@ s16 normalize (u16 value)
     else return 0;
 }
 
-void JOY_init (){
+void JOY_init ()
+{
     ADC_init (JOY_CH_X);
     ADC_init (JOY_CH_Y);
 }
 
-void JOY_read (JOY_pos_t* pos){
-    if (pos == NULL ) return;
+void JOY_read (JOY_pos_t* pos)
+{
+    if (pos == NULL) return;
 
     u16 ADC_x = ADC_read(JOY_CH_X);
     u16 ADC_y = ADC_read(JOY_CH_Y);
