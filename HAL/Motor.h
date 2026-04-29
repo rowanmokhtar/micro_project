@@ -1,7 +1,7 @@
 #ifndef MOTOR_H_
 #define MOTOR_H_
 
-#include "GPIO_INTERFACE.h"
+#include "../MICRO_PROJECT/MCAL/GPIO_DRIVERS/GPIO_INTERFACE.h"
 
 typedef enum {
     STOP,
