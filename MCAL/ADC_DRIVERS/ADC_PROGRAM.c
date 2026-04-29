@@ -52,6 +52,7 @@ void ADC_init(adc_vref_t vref, adc_prescaler_t prescaler)
             clearBit(ADCSRA, 0); // Clear ADPS0
             clearBit(ADCSRA, 1); // Clear ADPS1
             setBit(ADCSRA, 2);  // Set ADPS2
+            break;
         case DIV_128:
             setBit(ADCSRA, 0); // Set ADPS0
             setBit(ADCSRA, 1); // Set ADPS1
@@ -79,9 +80,9 @@ void ADC_freeRunning(adc_channel_t channel)
     ADMUX = (ADMUX & 0xE0) | channel; // Clear MUX bits and set new channel
     // Start conversion
     setBit(ADCSRA, 5); // Set ADATE bit to enable auto-triggering
-    clearBit(SFIOR, 7); // Clear ADTS2
-    clearBit(SFIOR, 6); // Clear ADTS1
-    clearBit(SFIOR, 5); // Clear ADTS0 for free running mode
+clearBit(ADCSRB, 0);
+clearBit(ADCSRB, 1);
+clearBit(ADCSRB, 2);
     setBit(ADCSRA, 6); // Set ADSC bit to start conversion
     
 }

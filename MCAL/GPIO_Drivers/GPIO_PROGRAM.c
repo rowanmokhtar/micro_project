@@ -2,14 +2,6 @@
 
 void GPIO_setPinDirection(port_t port, pin_t pin, direction_t direction) {
     switch (port) {
-        case GPIOA:
-            switch (direction) {
-                case INPUT: clearBit(DDRA, pin); break;
-                case INPUT_PULLUP: clearBit(DDRA, pin); setBit(PORTA, pin); break;
-                case OUTPUT: setBit(DDRA, pin); break;
-            }
-            break;
-
         case GPIOB:
             switch (direction) {
                 case INPUT: clearBit(DDRB, pin); break;
@@ -38,13 +30,6 @@ void GPIO_setPinDirection(port_t port, pin_t pin, direction_t direction) {
 
 void GPIO_setPinValue(port_t port, pin_t pin, value_t value) {
     switch (port) {
-        case GPIOA:
-            switch (value) {
-                case LOW: clearBit(PORTA, pin); break;
-                case HIGH: setBit(PORTA, pin); break;
-            }
-            break;
-
         case GPIOB:
             switch (value) {
                 case LOW: clearBit(PORTB, pin); break;
@@ -71,7 +56,6 @@ void GPIO_setPinValue(port_t port, pin_t pin, value_t value) {
 
 void GPIO_togglePinValue(port_t port, pin_t pin) {
     switch (port) {
-        case GPIOA: toggleBit(PORTA, pin); break;
         case GPIOB: toggleBit(PORTB, pin); break;
         case GPIOC: toggleBit(PORTC, pin); break;
         case GPIOD: toggleBit(PORTD, pin); break;
@@ -81,7 +65,6 @@ void GPIO_togglePinValue(port_t port, pin_t pin) {
 value_t GPIO_readPinValue(port_t port, pin_t pin) {
     u8 value = 0;  // Default value
     switch (port) {
-        case GPIOA: value = readBit(PINA, pin); break;
         case GPIOB: value = readBit(PINB, pin); break;
         case GPIOC: value = readBit(PINC, pin); break;
         case GPIOD: value = readBit(PIND, pin); break;
@@ -91,14 +74,6 @@ value_t GPIO_readPinValue(port_t port, pin_t pin) {
 
 void GPIO_setPortDirection (port_t port, direction_t direction){
     switch (port) {
-        case GPIOA:
-            switch (direction) {
-                case INPUT: DDRA = 0x00; break;
-                case INPUT_PULLUP: DDRA = 0x00; PORTA = 0xFF; break;
-                case OUTPUT: DDRA = 0xFF; break;
-            }
-            break;
-
         case GPIOB:
             switch (direction) {
                 case INPUT: DDRB = 0x00; break;
@@ -127,10 +102,6 @@ void GPIO_setPortDirection (port_t port, direction_t direction){
 
 void GPIO_setPortValue (port_t port, value_t value){
     switch (port) {
-        case GPIOA:
-            PORTA = value;
-            break;
-
         case GPIOB:
             PORTB = value;
             break;
@@ -148,7 +119,6 @@ void GPIO_setPortValue (port_t port, value_t value){
 u8 GPIO_readPortValue(port_t port) {
     u8 value = 0;  // Default value
     switch (port) {
-        case GPIOA: value = PINA; break;
         case GPIOB: value = PINB; break;
         case GPIOC: value = PINC; break;
         case GPIOD: value = PIND; break;

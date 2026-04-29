@@ -29,9 +29,7 @@ typedef enum
     ADC2,
     ADC3,
     ADC4,
-    ADC5,
-    ADC6,
-    ADC7
+    ADC5
 } adc_channel_t;
 
 

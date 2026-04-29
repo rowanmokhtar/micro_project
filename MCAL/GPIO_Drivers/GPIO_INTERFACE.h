@@ -5,7 +5,6 @@
 #include "GPIO_PRIVATE.h"
 
 typedef enum {
-    GPIOA,
     GPIOB,
     GPIOC,
     GPIOD
