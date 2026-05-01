@@ -1,11 +1,17 @@
 #include "JOYSTICK.h"
-#include "../MICRO_PROJECT/MCAL/ADC_DRIVERS/ADC_INTERFACE.h"
+#include "ADC_INTERFACE.h"
 
-#define JOY_CH_X 0
-#define JOY_CH_Y 1
+
+#define JOY_CH_X  ADC0
+#define JOY_CH_Y  ADC1
+
+
+
+
+
 
 #define CENTER 512
-#define DEAD_ZONE 30
+#define DEAD_ZONE 75
 
 // normalize the value to be from -100 to 100
 s16 normalize (u16 value)
@@ -16,11 +22,12 @@ s16 normalize (u16 value)
     else return 0;
 }
 
-void JOY_init ()
+
+void JOY_init(void)
 {
-    ADC_init (JOY_CH_X, DIV_128);
-    ADC_init (JOY_CH_Y, DIV_128);
+    ADC_init(AVCC, DIV_128); 
 }
+
 
 void JOY_read (JOY_pos_t* pos)
 {

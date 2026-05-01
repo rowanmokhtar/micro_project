@@ -1,7 +1,7 @@
 #ifndef JOYSTICK_H
 #define JOYSTICK_H
 
-#include "../MICRO_PROJECT/MCAL/GPIO_DRIVERS/TYPES.h"
+#include "TYPES.h"
 
 typedef struct{
     s16 x;
