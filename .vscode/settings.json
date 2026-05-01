@@ -1,9 +1,17 @@
 {
+<<<<<<< HEAD
   "C_Cpp_Runner.cCompilerPath": "C:/Users/rowan/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe",
   "C_Cpp_Runner.cppCompilerPath": "C:/Users/rowan/.platformio/packages/toolchain-atmelavr/bin/avr-g++.exe",
   "C_Cpp_Runner.debuggerPath": "C:/Users/rowan/.platformio/packages/toolchain-atmelavr/bin/avr-gdb.exe",
   "C_Cpp_Runner.cStandard": "gnu11",
   "C_Cpp_Runner.cppStandard": "gnu++11",
+=======
+  "C_Cpp_Runner.cCompilerPath": "gcc",
+  "C_Cpp_Runner.cppCompilerPath": "g++",
+  "C_Cpp_Runner.debuggerPath": "gdb",
+  "C_Cpp_Runner.cStandard": "",
+  "C_Cpp_Runner.cppStandard": "",
+>>>>>>> 3cd5e5031fe010ce0452b7c155e8674a55259b2a
   "C_Cpp_Runner.msvcBatchPath": "C:/Program Files/Microsoft Visual Studio/VR_NR/Community/VC/Auxiliary/Build/vcvarsall.bat",
   "C_Cpp_Runner.useMsvc": false,
   "C_Cpp_Runner.warnings": [
@@ -37,6 +45,7 @@
   "C_Cpp_Runner.warningsAsError": false,
   "C_Cpp_Runner.compilerArgs": [],
   "C_Cpp_Runner.linkerArgs": [],
+<<<<<<< HEAD
   "C_Cpp_Runner.includePaths": [
     "c:/Users/rowan/Documents/PlatformIO/Projects/micro project1/include",
     "c:/Users/rowan/Documents/PlatformIO/Projects/micro project1/src",
@@ -50,6 +59,9 @@
     "C:/Users/rowan/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
     ""
   ],
+=======
+  "C_Cpp_Runner.includePaths": [],
+>>>>>>> 3cd5e5031fe010ce0452b7c155e8674a55259b2a
   "C_Cpp_Runner.includeSearch": [
     "*",
     "**/*"

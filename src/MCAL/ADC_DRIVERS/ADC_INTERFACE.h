@@ -28,9 +28,7 @@ typedef enum
     ADC2,
     ADC3,
     ADC4,
-    ADC5,
-    ADC6,
-    ADC7
+    ADC5
 } adc_channel_t;
 
 void ADC_init        (adc_vref_t vref, adc_prescaler_t prescaler);
@@ -39,4 +37,14 @@ void ADC_freeRunning (adc_channel_t channel);
 f32  ADC_convert_to_v(u16 adc_value, f32 vref);
 f32  ADC_read_v      (adc_channel_t channel, f32 vref);
 
+<<<<<<< HEAD:src/MCAL/ADC_DRIVERS/ADC_INTERFACE.h
 #endif /* ADC_INTERFACE_H */
+=======
+void ADC_init(adc_vref_t vref, adc_prescaler_t prescaler);
+u16 ADC_read(adc_channel_t channel);
+void ADC_freeRunning(adc_channel_t channel);
+f32 ADC_convert_to_v(u16 adc_value, f32 vref);
+f32 ADC_read_v(adc_channel_t channel, f32 vref);
+
+#endif // ADC_INTERFACE_H
+>>>>>>> 3cd5e5031fe010ce0452b7c155e8674a55259b2a:MCAL/ADC_DRIVERS/ADC_INTERFACE.h
